@@ -51,14 +51,15 @@ List* getEdges(Graph* g, const char* label) {
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
 
-    MapPair* par = map_search(g->adjacencyMap, (char *)label1);
+    MapPair * par = map_search(g->adjacencyMap, (void *)label1); // Busca el nodo de origen
 
-    if (par == NULL) 
+    if (par == NULL) // Si no existe 
     {
         return -1;
     }
 
-    Edge* aux = list_first(par->value);
+    //si existe guarda el valor(clave y lista de aristas)
+    Edge * aux = list_first(par->value);
 
     while (aux != NULL) {
         if (strcmp(aux->target, label2) == 0) 
