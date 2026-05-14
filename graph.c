@@ -58,15 +58,16 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
         return -1;
     }
 
-    //si existe guarda el valor(clave y lista de aristas)
+    //si existe guarda el par(clave nombre nodo y lista de aristas)
     Edge * aux = list_first(par->value);
 
+    // bucle que recorre los arcos
     while (aux != NULL) {
         if (strcmp(aux->target, label2) == 0) 
         {
             return aux->weight;
         }
-        aux = (Edge *) list_next(par->value);
+        aux = (Edge *) list_next(par->value); // pasa a siguiente
     }
     return -1;
 }
