@@ -50,9 +50,12 @@ List* getEdges(Graph* g, const char* label) {
 
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
-    Node* origen = findNode(g, label1);
-    if (!origen) return -1;
-    Node* destino = findNode(g, label2);
+    Node* origen = map_search(g->adjacencyMap, label1);
+    if (origen != NULL)
+    {
+        return -1;
+    }
+    Node* destino = map_search(g->adjacencyMap, label2);
     return -1; 
 }
 
