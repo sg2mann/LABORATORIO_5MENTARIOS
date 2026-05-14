@@ -51,20 +51,21 @@ List* getEdges(Graph* g, const char* label) {
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
 
-    List* edgesList = (List*) map_search(g->adjacencyMap, (void*)label1);
+    List* edgesList = (List *) map_search(g->adjacencyMap, (char*)label1);
 
     if (edgesList == NULL) 
     {
         return -1;
     }
 
-    Edge* actual_edge = (Edge*) list_first(edgesList);
+    Edge* actual_edge = (Edge *) list_first(edgesList);
 
     while (actual_edge != NULL) {
-        if (strcmp(actual_edge->target, label2) == 0) {
+        if (strcmp(actual_edge->target, label2) == 0) 
+        {
             return actual_edge->weight;
         }
-        actual_edge = (Edge*)list_next(edgesList);
+        actual_edge = (Edge *)list_next(edgesList);
     }
     return -1;
 }
