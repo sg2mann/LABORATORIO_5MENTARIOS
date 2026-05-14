@@ -10,3 +10,27 @@ Thu May 14 08:05:52 PM UTC 2026:
  tests:  0|6
 ========================================
 3e1107e
+Thu May 14 08:14:06 PM UTC 2026: 
+ graph.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:53:5: error: unknown type name ‘Node’
+   53 |     Node* origen = findNode(g, label1);
+      |     ^~~~
+graph.c:53:20: error: implicit declaration of function ‘findNode’ [-Wimplicit-function-declaration]
+   53 |     Node* origen = findNode(g, label1);
+      |                    ^~~~~~~~
+graph.c:53:20: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+graph.c:55:5: error: unknown type name ‘Node’
+   55 |     Node* destino = findNode(g, label2);
+      |     ^~~~
+graph.c:55:21: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+   55 |     Node* destino = findNode(g, label2);
+      |                     ^~~~~~~~
+graph.c:55:11: error: unused variable ‘destino’ [-Werror=unused-variable]
+   55 |     Node* destino = findNode(g, label2);
+      |           ^~~~~~~
+cc1: all warnings being treated as errors
+5289358

@@ -46,10 +46,13 @@ List* getEdges(Graph* g, const char* label) {
     return NULL;
 }
 
+// EJERCICIO EN CLASES
+
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
-
-    // Si no existe el origen o terminamos de iterar sin encontrar el destino
+    Node* origen = findNode(g, label1);
+    if (!origen) return -1;
+    Node* destino = findNode(g, label2);
     return -1; 
 }
 
@@ -92,3 +95,5 @@ void destroyGraph(Graph* g) {
     free(g->adjacencyMap);
     free(g);
 }
+
+// 
