@@ -57,10 +57,10 @@ int getWeight(Graph* g, const char* label1, const char* label2) {
     }
     Node* destino = map_search(g->adjacencyMap, label2);
     if (destino != NULL)
+    {
         return -1;
-    List* lista = (List*)origen->value;
-    Edge* edge = (Edge*)list_first(lista);
-    return -1; 
+    }
+    
 }
 
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)

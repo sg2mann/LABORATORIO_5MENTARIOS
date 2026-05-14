@@ -143,3 +143,39 @@ graph.c:62:11: error: unused variable ‘edge’ [-Werror=unused-variable]
       |           ^~~~
 cc1: all warnings being treated as errors
 235295a
+Thu May 14 08:21:48 PM UTC 2026: 
+ graph.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Compilation failed
+In file included from test.c:5:
+graph.c: In function ‘getWeight’:
+graph.c:53:5: error: unknown type name ‘Node’
+   53 |     Node* origen = map_search(g->adjacencyMap, label1);
+      |     ^~~~
+graph.c:53:48: error: passing argument 2 of ‘map_search’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   53 |     Node* origen = map_search(g->adjacencyMap, label1);
+      |                                                ^~~~~~
+In file included from graph.c:8:
+map.h:22:37: note: expected ‘void *’ but argument is of type ‘const char *’
+   22 | MapPair *map_search(Map *map, void *key);
+      |                               ~~~~~~^~~
+graph.c:53:20: error: initialization of ‘int *’ from incompatible pointer type ‘MapPair *’ [-Wincompatible-pointer-types]
+   53 |     Node* origen = map_search(g->adjacencyMap, label1);
+      |                    ^~~~~~~~~~
+graph.c:58:5: error: unknown type name ‘Node’
+   58 |     Node* destino = map_search(g->adjacencyMap, label2);
+      |     ^~~~
+graph.c:58:49: error: passing argument 2 of ‘map_search’ discards ‘const’ qualifier from pointer target type [-Werror=discarded-qualifiers]
+   58 |     Node* destino = map_search(g->adjacencyMap, label2);
+      |                                                 ^~~~~~
+map.h:22:37: note: expected ‘void *’ but argument is of type ‘const char *’
+   22 | MapPair *map_search(Map *map, void *key);
+      |                               ~~~~~~^~~
+graph.c:58:21: error: initialization of ‘int *’ from incompatible pointer type ‘MapPair *’ [-Wincompatible-pointer-types]
+   58 |     Node* destino = map_search(g->adjacencyMap, label2);
+      |                     ^~~~~~~~~~
+graph.c:64:1: error: control reaches end of non-void function [-Werror=return-type]
+   64 | }
+      | ^
+cc1: all warnings being treated as errors
+9d7a23d
