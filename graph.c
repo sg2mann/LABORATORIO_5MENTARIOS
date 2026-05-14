@@ -50,18 +50,25 @@ List* getEdges(Graph* g, const char* label) {
 
 int getWeight(Graph* g, const char* label1, const char* label2) {
     if (!g || !label1 || !label2) return -1;
-    Node* origen = map_search(g->adjacencyMap, label1);
-    if (origen != NULL)
-    {
+
+    List* edgesList = (List*)map_search(g->adjacencyMap, (void*)label1);
+
+    if (edgesList == NULL) {
         return -1;
     }
-    Node* destino = map_search(g->adjacencyMap, label2);
-    if (destino != NULL)
-    {
-        return -1;
+
+    Edge* current_edge = (Edge*)list_first(edgesList);
+
+    while (current_edge != NULL) {
+        if (strcmp(current_edge->target, label2) == 0) {
+            return current_edge->weight;
+        }
+        current_edge = (Edge*)list_next(edgesList);
     }
-    
+
+    return -1;
 }
+
 
 // Retorna una nueva List* que contiene elementos de tipo char* (las etiquetas)
 List* getAdjacentLabels(Graph* g, const char* label) {
