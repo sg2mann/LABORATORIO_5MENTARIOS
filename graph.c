@@ -20,6 +20,7 @@ int is_equal_string(void *key1, void *key2) {
  *         IMPLEMENTACIÓN
  * ========================================= */
 
+// CREAR GRAFO
 Graph* createGraph() 
 {
     Graph * g = (Graph *) malloc(sizeof(Graph));
@@ -33,6 +34,7 @@ Graph* createGraph()
     return g;
 }
 
+// AGREGRAR NODOS
 void addNode(Graph* g, const char* label) 
 {
     if (!g || !label) return;
@@ -54,6 +56,7 @@ void addNode(Graph* g, const char* label)
     map_insert(g->adjacencyMap, labelCopia, nueva);
 }
 
+// AGREGAR ARCOS
 void addEdge(Graph* g, const char* src, const char* dest, int weight) 
 {
     if (!g || !src || !dest) return;
@@ -85,6 +88,7 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight)
     list_pushBack(listaArcos, nuevoArco);
 }
 
+// OBTENER ARCOS
 List* getEdges(Graph* g, const char* label) 
 {
     if (!g || !label) return NULL;
@@ -99,6 +103,7 @@ List* getEdges(Graph* g, const char* label)
     return (List *) par->value;
 }
 
+// OBTENER PESO DE UN ARCO
 int getWeight(Graph* g, const char* label1, const char* label2) 
 {
     if (!g || !label1 || !label2) return -1;
@@ -123,6 +128,7 @@ int getWeight(Graph* g, const char* label1, const char* label2)
     return -1;
 }
 
+// OBTENER ETIQUETA DE LOS NODOS ADYACENTES
 List* getAdjacentLabels(Graph* g, const char* label) 
 {
     if (!g || !label) return NULL;
@@ -145,6 +151,7 @@ List* getAdjacentLabels(Graph* g, const char* label)
     return nodosAdy;
 }
 
+// ELIMINAR EL GRAFO
 void destroyGraph(Graph* g) 
 {
     if (!g) return;
