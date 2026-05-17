@@ -33,9 +33,25 @@ Graph* createGraph()
     return g;
 }
 
-void addNode(Graph* g, const char* label) {
+void addNode(Graph* g, const char* label) 
+{
     if (!g || !label) return;
 
+    if (map_search(g->adjacencyMap, (void*)label) != NULL)
+    {
+        return;
+    }
+
+    char* labelCopia = (char *) malloc(strlen(label) + 1);
+    if (labelCopia == NULL)
+    {
+        return;
+    }
+
+    strcpy(labelCopia, label);
+
+    List * nueva = list_create();
+    map_insert(g->adjacencyMap, labelCopia, nueva);
 }
 
 void addEdge(Graph* g, const char* src, const char* dest, int weight) {
