@@ -123,9 +123,26 @@ int getWeight(Graph* g, const char* label1, const char* label2)
     return -1;
 }
 
-List* getAdjacentLabels(Graph* g, const char* label) {
+List* getAdjacentLabels(Graph* g, const char* label) 
+{
     if (!g || !label) return NULL;
-    return NULL; 
+
+    List * arcos = getEdges(g, label);
+    if (arcos == NULL)
+    {
+        return NULL;
+    }
+
+    List * nodosAdy = list_create();
+    Edge * arcoActual = (Edge *) list_first(arcos);
+
+    while (arcoActual != NULL)
+    {
+        list_pushBack(nodosAdy, arcoActual->target);
+        arcoActual = (Edge *) list_next(arcos);
+    }
+
+    return nodosAdy;
 }
 
 void destroyGraph(Graph* g) 
