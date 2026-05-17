@@ -81,7 +81,7 @@ void addEdge(Graph* g, const char* src, const char* dest, int weight)
 
     strcpy(nuevoArco->target, dest);
 
-    List* listaArcos = (List *) pair->value;
+    List* listaArcos = (List *) par->value;
     list_pushBack(listaArcos, nuevoArco);
 }
 
